@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 void printbin(unsigned long n) {
-    char binario[33];
-    binario[32] = '\0';
+    char binario[65];
+    binario[64] = '\0';
 
-    for(int i = 31; i >= 0; i--) {
+    for(int i = 63; i >= 0; i--) {
         binario[i] = (n & 1) + '0';
         n = n >> 1;
     }
