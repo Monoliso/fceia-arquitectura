@@ -3,31 +3,26 @@
 
 void printbin(unsigned long n)
 {
-    if (n == 0)
-    {
-        printf("El número en binario es: 0b0\n");
-        return;
-    }
-    char binario[65], *ref = binario;
+    char binario[65];
+    int bit_significativo = 63;
     binario[64] = '\0';
 
-    for (int i = 63; i >= 0; i--)
+    for (int i = 63, x = 1; i >= 0; i--)
     {
-        binario[i] = (n & 1) + '0';
-        n = n >> 1;
+        if ((n & x) != 0) {
+            binario[i] = '1';
+            if (i < bit_significativo) bit_significativo = i;
+        } else {
+            binario[i] = '0';
+        }
+        x = x << 1;
     }
-
-    for (int i = 0, condicion = 0; i < 64 && !condicion; i++, ref++)
-    {
-        if (binario[i] == '1')
-            condicion = 1;
-    }
-    printf("El número en binario es: 0b%s\n", ref - 1);
+    printf("El número en binario es: 0b%s\n", binario + bit_significativo);
 }
 
 int main(int argc, char *argv[])
 {
 
-    printbin(0xFF);
+    printbin(0);
     return 0;
 }
