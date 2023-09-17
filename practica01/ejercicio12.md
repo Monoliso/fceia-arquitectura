@@ -92,5 +92,5 @@ $(N_1 \otimes N_2) \oplus (N_1 \otimes N_3) = (0\ 10000001101\ 11010100110000000
 
 ## d)
 
-En ambos casos, presición simple y presición doble, ambas operaciones difieren en el resultado final. En este caso resulta ser más precisa la segunda operación ( $(N_1 \otimes N_2) \oplus (N_1 \otimes N_3)$ ) ya que el resultado es 30.000 y en la primera operación es un número cercano a 30.000.  
+En ambos casos, presición simple y presición doble, ambas operaciones difieren en el resultado final. En este caso resulta ser más precisa la segunda operación ( $(N_1 \otimes N_2) \oplus (N_1 \otimes N_3)$ ) ya que el resultado es 30.000 y en la primera operación es un número cercano a 30.000. Esto sucede porque 0,1 y 0,2 son dos números muy próximos, entonces al sumarlos primero ocurre un error por redondeo. 
 En el caso de la primera operación, el resultado en presición doble resulta ser más cercano al valor real de la operación que el resultado de la primera operación. Esto sucede porque el bit menos significativo de ambos resultados está encendido, y como la en representación de doble presición el bit menos significativo representa un valor menor que en el caso del resultado en simple presición, la distancia o erorr con respecto al resultado correcto es menor.
