@@ -52,9 +52,9 @@ int main()
     printf("inf != nan: %d\n", INFINITY != NAN);
     printf("inf > nan: %d\n", INFINITY > NAN);
     printf("inf < nan: %d\n", INFINITY < NAN);
-    // nan siempre retorna falso, excepto al ver si son distintos
+    // comparar con nan siempre retorna falso, excepto al ver si son distintos
 
-    //
+    // infinito +- 1 = infinito?
     printf("+inf + 1?: %f\n", INFINITY + 1);
     printf("+inf - 1?: %f\n", INFINITY - 1);
 
