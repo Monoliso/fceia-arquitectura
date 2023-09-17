@@ -1,0 +1,21 @@
+Realice el procedimiento de suma (simple precision) del numero 1.75×(2^−79)
+con el numero 0x19d00000 expresado en IEEE 754 simple precision.
+
+1.75x(2^-79) = (signo=0; exponente = (-79+127)10 = (48)10 = (00110000)2; significante=(1.11)2)
+1.75x(2^-79) = (0 00110000 11000000000000000000000)ieee754
+
+0x  1     9    d    0    0    0    0    0  =
+0b 0001 1001 1101 0000 0000 0000 0000 0000
+
+0x19d00000 = (0 00110011 10100000000000000000000)ieee754
+
+Primero igualamos los exponentes (menor al mayor), por lo que corremos la coma 3 veces hacia la izquierda y luego sumamos los significantes:
+    1.10100000000000000000000
++
+    0.00111000000000000000000
+    -------------------------
+    1.11011000000000000000000
+
+como la coma quedo bien ubicada, el resultado de la suma es directamente:
+(0 00110011 11011000000000000000000)ieee754 = (signo=0; exponente=-76; significante=(1 + 2^-1 + 2^-2 + 2^-4 + 2^-5))
+(-1^0 x (2^-76) x (1.84375))10 = 1.84375x(2^-76)
