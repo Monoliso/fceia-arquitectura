@@ -10,11 +10,11 @@ main:
   movb length, %cl
 
   movq $0, %rax
-  movq $1, %r11
-  movq $list, %rdx
+  movq $0, %r11
+  lea list, %rdx # movq $list, %rdx
 suma:
-  movq (%rdx, %r11, 8), %r10
-  addq %r10, %rax
+  movl (%rdx, %r11, 4), %r10d
+  addl %r10d, %eax
 
   incq %r11
   loop suma
