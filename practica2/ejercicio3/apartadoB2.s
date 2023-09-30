@@ -8,7 +8,7 @@ N4: .byte -56
 
 main:
 
-movb N3(%rip), %al
-movb N4(%rip), %bl
+movb N3, %al
+movb N4, %bl
 addb %bl, %al
 ret

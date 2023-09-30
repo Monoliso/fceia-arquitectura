@@ -6,8 +6,8 @@ N4: .byte -56
 .global main
 main:
 
-movb N2(%rip), %al
-movb N4(%rip), %bl
+movb N2, %al
+movb N4, %bl
 subb %bl, %al
 
 ret

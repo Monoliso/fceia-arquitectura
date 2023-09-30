@@ -6,7 +6,7 @@ N5: .byte -91
 .global main
 main:
 
-movb N3(%rip), %al
-movb N5(%rip), %bl
+movb N3, %al
+movb N5, %bl
 addb %bl, %al
 ret

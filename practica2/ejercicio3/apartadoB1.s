@@ -7,7 +7,7 @@ N2: .byte 120
 .global main
 # En mi computadora está siendo necesario colocar (%rip) para poder compilar correctamente el código
 main:
-movb N1(%rip), %al
-movb N2(%rip), %bl
+movb N1, %al
+movb N2, %bl
 addb %bl, %al
 ret

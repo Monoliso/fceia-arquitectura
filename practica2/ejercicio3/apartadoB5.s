@@ -7,8 +7,8 @@ N2: .byte 120
 .global main
 main:
 
-movb N5(%rip), %al
-movb N2(%rip), %bl
+movb N5, %al
+movb N2, %bl
 subb %bl, %al
 
 ret
