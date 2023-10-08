@@ -1,7 +1,7 @@
 .data
 list: .long 10, 20, 30, 40, 50, 60, 70, 80, 90, 100
 length: .byte 10
-format: .asciz "La suma es %d, el menor es %d, el mayor es %d, y el promedio es %d\n"
+format: .asciz "La suma es %d, el mayor es %d, el menor es %d, y el promedio es %d\n"
 
 .text
 
@@ -11,21 +11,35 @@ main:
   xorq %rsi, %rsi
   movb length, %sil # cant de elementos
   call sumaInt
+  pushq %rax # guardamos el resultado para imprimir
 
   lea list, %rdi # = movq $list, %rdx
   xorq %rsi, %rsi
   movb length, %sil # cant de elementos
   call maxInt
+  pushq %rax # guardamos el resultado para imprimir
 
   lea list, %rdi # = movq $list, %rdx
   xorq %rsi, %rsi
   movb length, %sil # cant de elementos
   call minInt
+  pushq %rax # guardamos el resultado para imprimir
 
   lea list, %rdi # = movq $list, %rdx
   xorq %rsi, %rsi
   movb length, %sil # cant de elementos
   call promedioInt
+
+  movq %rax, %r8 # 4to dato a imprimir (resultado de promedioInt)
+  popq %rcx # 3er dato a imprimir
+  popq %rdx # 2do dato a imprimir
+  popq %rsi # 1er dato a imprimir
+
+  pushq %rbp
+  movq $format, %rdi # El primer argumento es el formato.
+  xorq %rax, %rax # Cantidad de valores de punto flotante.
+  call printf
+  popq %rbp
 
   xorq %rax, %rax
   ret
