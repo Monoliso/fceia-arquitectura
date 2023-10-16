@@ -6,17 +6,28 @@ length: .byte 10
 
 .global main
 main:
-  xorq %rcx, %rcx
-  movb length, %cl
+  xorq %rsi, %rsi
+  movb length, %sil
+  lea list, %rdi # movq $list, %rdi
 
-  movq $0, %rax
-  movq $0, %r11
-  lea list, %rdx # movq $list, %rdx
-suma:
-  movl (%rdx, %r11, 4), %r10d
-  addl %r10d, %eax
+  call sumaInt
 
-  incq %r11
-  loop suma
+  xorq %rax, %rax
+  ret
+
+# ----------------------------
+# sumaInt(rdi=lista de valores a sumar, rsi=cant. elementos)
+# devuelve la suma en eax
+sumaInt:
+  movq %rsi, %rcx
+  xorq %r11, %r11 # = 0
+  xorl %eax, %eax # = 0
+
+loopSumaInt:
+  movl (%rdi, %r11, 4), %r10d # guardamos un valor del array en r10d
+  addl %r10d, %eax # lo sumamos
+
+  incq %r11 # r11++
+  loop loopSumaInt # reduce rcx en 1 y salta a "loopSumaInt" hasta que sea igual a 0
 
   ret

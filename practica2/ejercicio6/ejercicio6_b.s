@@ -90,13 +90,15 @@ noMin:
   ret
 
 # ----------------------------
+# promedioInt(rdi=lista de numeros, rsi=cant de numeros)
+# devuelve el promedio
 promedioInt:
+  pushq %rsi
   call sumaInt # obtenemos la suma en rax
 
-  xorq %rcx, %rcx
-  movb length, %cl
+  popq %rsi
 
-  xorq %rdx, %rdx # dividimos edx:eax por ecx y el resultado queda en eax
-  idivl %ecx
+  xorq %rdx, %rdx # dividimos edx:eax por esi y el resultado queda en eax
+  idivl %esi
 
   ret

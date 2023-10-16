@@ -1,6 +1,6 @@
     .data
 format: .asciz "%ld\n"
-format01: .asciz "%x\n"
+formatHex: .asciz "%x\n"
 i: .quad 0xDEADBEEF
 
     .text
@@ -18,38 +18,38 @@ main:
     call printf
 
     # b)
-    movq $format01, %rdi
+    movq $format, %rdi
     leaq format, %rsi
     xorq %rax, %rax
     call printf
 
     # c)
-    movq $format01, %rdi
-    movq $format, %rdi
+    movq $formatHex, %rdi
+    leaq format, %rsi
     xorq %rax, %rax
     call printf
 
     # d)
-    movq (%rsp), %rsi
     movq $format, %rdi
+    movq (%rsp), %rsi
     xorq %rax, %rax
     call printf
 
     # e)
-    movq 8(%rsp), %rsi
     movq $format, %rdi
+    movq 8(%rsp), %rsi
     xorq %rax, %rax
     call printf
 
     # f)
+    movq $formatHex, %rdi
     movq i, %rsi
-    movq $format01, %rdi
     xorq %rax, %rax
     call printf
 
     # g)
+    movq $formatHex, %rdi
     leaq i, %rsi
-    movq $format01, %rdi
     xorq %rax, %rax
     call printf
 

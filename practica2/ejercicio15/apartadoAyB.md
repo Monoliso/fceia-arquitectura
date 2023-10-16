@@ -21,10 +21,10 @@ se cargó lo siguiente:
 
 |     Direccion    | Contenido |    Espacio   |
 |       :---       |   :---:   |      ---:    |
-|  0X7fffffffe004  |    %ax    |    2 bytes   |
+|  0X7fffffffe004  |    %ax    |    4 bytes   |
 |  0X7fffffffe008  |   %rcx    |    8 bytes   |
-|  0X7fffffffe010  |   %dl*    |    8 bytes   |
-|  0X7fffffffe014  |    %dl    |    1 bytes   |
+|  0X7fffffffe010  |   %dl*    |    4 bytes   |
+|  0X7fffffffe014  |    %dl    |    4 bytes   |
 |  0X7fffffffe018  |   %esi    |    4 bytes   |
 |  0X7fffffffe01c  |    %cl    |    4 bytes   |
 |  0X7fffffffe020  |   %rbp    |    8 bytes   |

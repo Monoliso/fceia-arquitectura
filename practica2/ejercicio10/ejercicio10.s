@@ -5,16 +5,18 @@
 
 .global main
 main:
-  movq $0xFFFFFFFFFFFFFFFF, %rax
-  ror $32, %rax
+  # a)
+  movq $0x00000000FFFFFFFF, %rax
+  ror $32, %rax # rax = 0xFFFFFFFF00000000
 
-
+  # b)
+  movq $0x00000000FFFFFFFF, %rax
   xorq %rdi, %rdi
-  xorq %r8, %r8
+
   movq $64, %rcx
 loopConteo:
   ror $1, %rax
-  adc %r8, %rdi
+  adc $0, %rdi
 
   loop loopConteo
 
