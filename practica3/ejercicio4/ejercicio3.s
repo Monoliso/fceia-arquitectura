@@ -5,7 +5,6 @@ len: .long 5
 
 
 .text
-.global main
 main:
   leaq a, %rdi
   leaq b, %rsi
