@@ -33,7 +33,7 @@ int main(void)
     float *b2 = malloc(sizeof(float)*CANT_ELEM);
     for(int i=0; i<CANT_ELEM; ++i){
         a1[i] = i;
-        b2[i] = i;
+        b1[i] = i;
         a2[i] = i;
         b2[i] = i;
     }

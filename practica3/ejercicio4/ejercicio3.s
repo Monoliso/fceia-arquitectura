@@ -19,6 +19,9 @@ main:
 # sum(rdi = vector float, rsi = vector float, rdx = largo de los vectores)
 # devuelve la suma de a pares de los valores en los vectores en la direccion de rdi
 sum:
+  pushq %rbp # prologo
+  movq %rsp, %rbp
+
   movq %rdx, %rcx # para usar loop
   movq $0, %r8
   cvtsi2ss %r8, %xmm0
@@ -33,5 +36,8 @@ sum_loop:
   incq %r8
 
   loop sum_loop
+
+  movq %rbp, %rsp # epilogo
+  popq %rbp
 
   ret

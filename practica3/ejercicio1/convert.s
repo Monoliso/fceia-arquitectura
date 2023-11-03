@@ -5,11 +5,12 @@
 constante: .double 1.5
 
 .text
-
+# double convert(double f, int c)
+# devuelve: f*1.5 + c
 .global convert
 convert:
     movsd constante, %xmm1
-    cvtsi2sd %rdi, %xmm2
-    mulsd %xmm1, %xmm0
-    addsd %xmm2, %xmm0
-ret
+    cvtsi2sd %rdi, %xmm2 # convert (int)c to (double)c
+    mulsd %xmm1, %xmm0 # f * 1.5
+    addsd %xmm2, %xmm0 # (f*1.5) + c
+    ret

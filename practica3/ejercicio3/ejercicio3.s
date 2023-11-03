@@ -22,8 +22,7 @@ main:
 sum:
   movq %rdx, %rcx # para usar loop
   movq $0, %r8
-  cvtsi2ss %r8, %xmm0
-  cvtsi2ss %r8, %xmm1
+  
 sum_loop:
   movss (%rdi, %r8, 4), %xmm0
   movss (%rsi, %r8, 4), %xmm1
@@ -35,4 +34,5 @@ sum_loop:
 
   loop sum_loop
 
+  xorq %rax, %rax
   ret

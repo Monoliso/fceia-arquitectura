@@ -1,9 +1,9 @@
 .data
 .align 16
-a: .float 0.5, 2.0, 3.2, 4.0, 5.0, 10.5, 21.3, 50.0, 125.0, 300.12345
+a: .float 0.5, 2.0, 3.2, 4.0, 5.0, 10.5, 21.3, 50.0
 .align 16
-b: .float 9.5, 8.0, 6.8, 6.0, 5.0, 89.5, 28.7, 50.0, 275.5, 699.87655
-len: .long 10
+b: .float 9.5, 8.0, 6.8, 6.0, 5.0, 89.5, 28.7, 50.0
+len: .long 8
 
 
 .text
@@ -21,6 +21,9 @@ main:
 # sum(rdi = vector float, rsi = vector float, rdx = largo de los vectores)
 # devuelve la suma de a pares de los valores en los vectores en la direccion de rdi
 sum_simd:
+  pushq %rbp # prologo
+  movq %rsp, %rbp
+
   movq %rdx, %rcx # para usar loop
   movq $0, %r8
   cvtsi2ss %r8, %xmm0
@@ -54,4 +57,7 @@ sum_ss:
   loop sum_ss
 
 end_loop:
+  movq %rbp, %rsp # epilogo
+  popq %rbp
+
   ret
