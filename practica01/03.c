@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Otra solución para pasar de int a char:
+// https://stackoverflow.com/questions/190229/where-is-the-itoa-function-in-linux
+
 void printbin(unsigned long n) {
     if (n == 0) {
         puts("0");
